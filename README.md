@@ -1,24 +1,75 @@
-srsRAN
-======
+# srsRAN 4G LTE Project
 
-[![Build Status](https://github.com/srsran/srsRAN_4G/actions/workflows/ccpp.yml/badge.svg)](https://github.com/srsran/srsRAN_4G/actions/workflows/ccpp.yml)
-[![CodeQL](https://github.com/srsran/srsRAN_4G/actions/workflows/codeql.yml/badge.svg)](https://github.com/srsran/srsRAN_4G/actions/workflows/codeql.yml)
+## Project Overview
 
-srsRAN is an open source 4G software radio suite developed by [SRS](http://www.srs.io). For 5G RAN, see our new O-RAN CU/DU solution - [srsRAN Project](https://www.github.com/srsran/srsran_project).
+This project demonstrates a software-based 4G LTE network using srsRAN.
 
-See the [srsRAN 4G project pages](https://www.srsran.com) for information, guides and project news.
+The LTE network is simulated without physical USRP hardware by using ZeroMQ (ZMQ) as the RF interface.
 
-The srsRAN suite includes:
-  * srsUE - a full-stack SDR 4G UE application with prototype 5G features
-  * srsENB - a full-stack SDR 4G eNodeB application
-  * srsEPC - a light-weight 4G core network implementation with MME, HSS and S/P-GW
+## Components
 
-For application features, build instructions and user guides see the [srsRAN 4G documentation](https://docs.srsran.com/projects/4g/).
+- srsENB - LTE eNodeB
+- srsEPC - Evolved Packet Core
+- srsUE - LTE User Equipment
+- ZeroMQ - Software RF interface
+- HSS - Subscriber database
+- MME - Mobility Management Entity
+- SPGW - Serving and Packet Gateway
 
-For license details, see LICENSE file.
+## Practical Result
 
-Support
-=======
+The LTE network was successfully started using ZMQ-based RF simulation.
 
-Mailing list: https://lists.srsran.com/mailman/listinfo/srsran-users
+The UE successfully:
+
+1. Detected the LTE cell.
+2. Established an RRC connection.
+3. Completed random access.
+4. Successfully attached to the network.
+5. Received IP address 172.16.0.2.
+6. Passed the connectivity test.
+
+## Connectivity Test
+
+Command:
+
+    ping -c 4 172.16.0.2
+
+Result:
+
+    4 packets transmitted, 4 received, 0% packet loss
+
+This confirms successful connectivity in the simulated LTE environment.
+
+## Configuration Files
+
+### srsENB
+
+- srsenb/enb.conf
+- srsenb/sib.conf
+- srsenb/rr.conf
+- srsenb/rb.conf
+
+### srsEPC
+
+- srsepc/epc.conf
+- srsepc/user_db.csv
+
+### srsUE
+
+- srsue/ue.conf
+
+## Environment
+
+- Linux / WSL2
+- srsRAN 4G
+- CMake
+- GCC / G++
+- ZeroMQ
+- UHD support
+- LTE EPC, eNB and UE
+
+## Hardware
+
+This practical uses ZeroMQ for RF simulation, so physical USRP hardware is not required.
 
