@@ -168,7 +168,7 @@ int main(int argc, char** argv)
   get_time_interval(t);
 
   printf("Byte: %ld us\n", t[0].tv_usec);
-  for (int j = 0; i < num_bits / mod.nbits_x_symbol; j++) {
+  for (int j = 0; j < num_bits / mod.nbits_x_symbol; j++) {
     if (symbols[j] != symbols_bytes[j]) {
       printf("error in symbol %d\n", j);
       exit(-1);
